@@ -11,7 +11,9 @@ def setup_mock_task(db_session, worker_id):
         title="Verif Complaint",
         category="OTHER",
         latitude=13.0,
-        longitude=80.0
+        longitude=80.0,
+        citizen_name="Mock Citizen",
+        citizen_phone="1234567890"
     )
     db_session.add(complaint)
     db_session.commit()
@@ -33,7 +35,7 @@ def test_submit_before_verification(client, db_session):
     
     from app.models.user import User
     user = db_session.query(User).filter(User.email == "worker@keeladi.gov").first()
-    user.role = "SANITATION_WORKER"
+    user.role = "WORKER"
     db_session.commit()
     
     task = setup_mock_task(db_session, user.id)

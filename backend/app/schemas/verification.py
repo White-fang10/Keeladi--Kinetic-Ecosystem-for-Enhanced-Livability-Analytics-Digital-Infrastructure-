@@ -1,6 +1,8 @@
 from typing import Optional
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict
+from app.models.enums import ApprovalStatus
+
 
 class VerificationBeforeCreate(BaseModel):
     task_id: str
@@ -8,15 +10,18 @@ class VerificationBeforeCreate(BaseModel):
     before_lat: float
     before_lng: float
 
+
 class VerificationAfterCreate(BaseModel):
     task_id: str
     after_image_url: str
     after_lat: float
     after_lng: float
 
+
 class VerificationApprove(BaseModel):
-    status: str # "APPROVED" or "REJECTED"
+    status: ApprovalStatus  # APPROVED or REJECTED (proper enum instead of raw string)
     remarks: Optional[str] = None
+
 
 class VerificationResponse(BaseModel):
     id: str

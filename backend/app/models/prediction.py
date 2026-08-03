@@ -1,9 +1,10 @@
 import uuid
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 from sqlalchemy import Column, String, Float, Integer, Date, Text, DateTime, ForeignKey, JSON
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
+
 
 class PredictionResult(Base):
     __tablename__ = "prediction_results"
@@ -21,8 +22,8 @@ class PredictionResult(Base):
     rule_version = Column(String(20), default="1.0", nullable=False)
     input_snapshot = Column(JSON, nullable=True)
     
-    generated_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    generated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     
     # Relationships
     ward = relationship("Ward", backref="predictions")
@@ -41,6 +42,6 @@ class WasteCollectionHistory(Base):
     complaints_resolved = Column(Integer, default=0, nullable=False)
     avg_resolution_hours = Column(Float, nullable=True)
     
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     
     ward = relationship("Ward", backref="collection_history")

@@ -1,10 +1,11 @@
 import uuid
-from datetime import datetime
-from sqlalchemy import Column, String, Float, Integer, DateTime, ForeignKey
+from datetime import datetime, timezone
+from sqlalchemy import Column, String, Float, Integer, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
 from app.models.enums import VehicleStatus
+
 
 class Vehicle(Base):
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -18,14 +19,17 @@ class Vehicle(Base):
     make_model = Column(String(255), nullable=True)
     year = Column(Integer, nullable=True)
     
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    # Live tracking
+    is_tracking_active = Column(Boolean, default=False, nullable=False)
+    
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc), nullable=False)
     deleted_at = Column(DateTime, nullable=True)
     
     # Relationships
     ward = relationship("Ward", backref="vehicles")
     driver = relationship("User", backref="vehicle")
-    locations = relationship("VehicleLocation", back_populates="vehicle")
+    locations = relationship("VehicleLocation", back_populates="vehicle", cascade="all, delete-orphan")
     collection_records = relationship("CollectionRecord", back_populates="vehicle")
 
 
@@ -37,7 +41,7 @@ class VehicleLocation(Base):
     longitude = Column(Float, nullable=False)
     speed = Column(Float, nullable=True)
     heading = Column(Float, nullable=True)
-    recorded_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    recorded_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     
     vehicle = relationship("Vehicle", back_populates="locations")
 
@@ -53,9 +57,9 @@ class CollectionRecord(Base):
     waste_type = Column(String(100), nullable=True)
     status = Column(String(50), nullable=False, default="STARTED")
     
-    started_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    started_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     completed_at = Column(DateTime, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     
     vehicle = relationship("Vehicle", back_populates="collection_records")
     driver = relationship("User")

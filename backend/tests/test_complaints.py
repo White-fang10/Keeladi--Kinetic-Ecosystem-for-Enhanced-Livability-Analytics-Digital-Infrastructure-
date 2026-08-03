@@ -27,13 +27,15 @@ def test_submit_complaint(client, db_session):
         "category": "GARBAGE_OVERFLOW",
         "latitude": 13.0827,
         "longitude": 80.2707,
-        "ward_id": "dummy-ward-id" 
+        "ward_id": "dummy-ward-id",
+        "citizen_name": "Test Citizen",
+        "citizen_phone": "1234567890"
     }
     
-    response = client.post(f"{settings.API_V1_STR}/complaints", json=payload, headers=headers)
+    response = client.post(f"{settings.API_V1_STR}/public/complaints", json=payload)
     
     assert response.status_code == 200
     data = response.json()
     assert data["success"] is True
-    assert data["data"]["status"] == "NEW"
+    assert data["data"]["status"] == "PROCESSING"
     assert "KLD" in data["data"]["reference_number"]

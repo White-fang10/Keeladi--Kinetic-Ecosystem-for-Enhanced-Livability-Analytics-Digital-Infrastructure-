@@ -7,7 +7,7 @@ def test_register_vehicle(client, db_session):
     
     from app.models.user import User
     user = db_session.query(User).filter(User.email == "exec.engineer@keeladi.gov").first()
-    user.role = "EXECUTIVE_ENGINEER"
+    user.role = "ADMIN"
     db_session.commit()
     
     payload = {
@@ -30,7 +30,7 @@ def test_update_vehicle_status(client, db_session):
     
     from app.models.user import User
     user = db_session.query(User).filter(User.email == "driver@keeladi.gov").first()
-    user.role = "DRIVER"
+    user.role = "WORKER"
     db_session.commit()
     
     # Create a mock vehicle

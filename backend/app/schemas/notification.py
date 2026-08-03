@@ -2,6 +2,7 @@ from typing import Optional
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict
 
+
 class NotificationBase(BaseModel):
     type: str
     title: str
@@ -9,12 +10,18 @@ class NotificationBase(BaseModel):
     reference_type: Optional[str] = None
     reference_id: Optional[str] = None
 
+
 class NotificationCreate(NotificationBase):
-    user_id: str
+    user_id: Optional[str] = None
+    citizen_email: Optional[str] = None
+    citizen_phone: Optional[str] = None
+
 
 class NotificationResponse(NotificationBase):
     id: str
-    user_id: str
+    user_id: Optional[str] = None
+    citizen_email: Optional[str] = None
+    citizen_phone: Optional[str] = None
     is_read: bool
     read_at: Optional[datetime] = None
     created_at: datetime

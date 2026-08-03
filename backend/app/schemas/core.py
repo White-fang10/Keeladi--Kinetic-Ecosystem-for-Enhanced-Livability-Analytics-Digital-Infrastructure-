@@ -3,12 +3,15 @@ from pydantic import BaseModel
 
 T = TypeVar("T")
 
+
 class Pagination(BaseModel):
     page: int
     limit: int
     total: int
+    total_pages: int
     next: Optional[str] = None
     previous: Optional[str] = None
+
 
 class StandardResponse(BaseModel, Generic[T]):
     success: bool

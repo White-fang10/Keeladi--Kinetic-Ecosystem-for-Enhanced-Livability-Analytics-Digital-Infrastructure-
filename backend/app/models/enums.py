@@ -1,19 +1,19 @@
 import enum
 
+
 class UserRole(str, enum.Enum):
-    CHIEF_ENGINEER = "CHIEF_ENGINEER"
-    EXECUTIVE_ENGINEER = "EXECUTIVE_ENGINEER"
-    ASSISTANT_ENGINEER = "ASSISTANT_ENGINEER"
-    JUNIOR_ENGINEER = "JUNIOR_ENGINEER"
+    """Simplified 3-role system. Citizens don't need accounts."""
+    ADMIN = "ADMIN"
     SUPERVISOR = "SUPERVISOR"
-    DRIVER = "DRIVER"
-    SANITATION_WORKER = "SANITATION_WORKER"
+    WORKER = "WORKER"
     CITIZEN = "CITIZEN"
+
 
 class UserStatus(str, enum.Enum):
     ACTIVE = "ACTIVE"
     INACTIVE = "INACTIVE"
     SUSPENDED = "SUSPENDED"
+
 
 class ComplaintCategory(str, enum.Enum):
     GARBAGE_OVERFLOW = "GARBAGE_OVERFLOW"
@@ -23,8 +23,10 @@ class ComplaintCategory(str, enum.Enum):
     DRAIN_BLOCKAGE = "DRAIN_BLOCKAGE"
     OTHER = "OTHER"
 
+
 class ComplaintStatus(str, enum.Enum):
     NEW = "NEW"
+    PROCESSING = "PROCESSING"
     ASSIGNED = "ASSIGNED"
     IN_PROGRESS = "IN_PROGRESS"
     VERIFICATION = "VERIFICATION"
@@ -33,11 +35,13 @@ class ComplaintStatus(str, enum.Enum):
     REJECTED = "REJECTED"
     ESCALATED = "ESCALATED"
 
+
 class Priority(str, enum.Enum):
     LOW = "LOW"
     MEDIUM = "MEDIUM"
     HIGH = "HIGH"
     CRITICAL = "CRITICAL"
+
 
 class TaskStatus(str, enum.Enum):
     CREATED = "CREATED"
@@ -48,11 +52,13 @@ class TaskStatus(str, enum.Enum):
     CANCELLED = "CANCELLED"
     REASSIGNED = "REASSIGNED"
 
+
 class VehicleType(str, enum.Enum):
     COMPACTOR = "COMPACTOR"
     TIPPER = "TIPPER"
     AUTO_TIPPER = "AUTO_TIPPER"
     MINI_TRUCK = "MINI_TRUCK"
+
 
 class VehicleStatus(str, enum.Enum):
     AVAILABLE = "AVAILABLE"
@@ -60,3 +66,9 @@ class VehicleStatus(str, enum.Enum):
     FULL = "FULL"
     DISPOSAL = "DISPOSAL"
     MAINTENANCE = "MAINTENANCE"
+
+
+class ApprovalStatus(str, enum.Enum):
+    PENDING = "PENDING"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
