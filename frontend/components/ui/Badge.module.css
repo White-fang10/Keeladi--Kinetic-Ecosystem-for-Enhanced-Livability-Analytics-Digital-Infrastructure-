@@ -1,0 +1,29 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* Variants */
+.default  { background: rgba(137,138,141,0.2); color: var(--surface); }
+.accent   { background: rgba(230,255,43,0.15); color: var(--accent); }
+.success  { background: rgba(100,220,100,0.15); color: #6ddc6d; }
+.warning  { background: rgba(255,180,50,0.15); color: #ffb832; }
+.danger   { background: rgba(220,80,80,0.15); color: #ff7b7b; }
+.info     { background: rgba(80,180,220,0.15); color: #50b4dc; }
+.muted    { background: rgba(137,138,141,0.12); color: var(--text-muted); }

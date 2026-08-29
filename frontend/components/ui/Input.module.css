@@ -1,0 +1,73 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neo-shadow-inset);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent), var(--neo-shadow-inset);
+}
+
+.hasLeftIcon {
+  padding-left: 42px;
+}
+
+.hasError {
+  border-color: #ff7b7b;
+}
+
+.hasError:focus {
+  box-shadow: inset 0 0 0 1px #ff7b7b, var(--neo-shadow-inset);
+}
+
+.errorText {
+  color: #ff7b7b;
+  font-size: 0.75rem;
+  margin-left: 4px;
+  margin-top: 2px;
+}

@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.header {
+  margin-bottom: var(--space-md);
+}
+
+.title {
+  font-size: 2.25rem;
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-xl);
+}
+
+.chartCard {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.cardHeader h3 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+.chartWrapper {
+  flex: 1;
+  min-height: 0; /* Important for responsive container in flex */
+}
+
+.pieCard {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.pieWrapper {
+  flex: 1;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure recharts tooltip text is legible on dark mode */
+:global(.recharts-tooltip-item) {
+  color: var(--text-primary) !important;
+}
+
+:global(.recharts-default-tooltip) {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--neo-shadow) !important;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; }
+  .pieCard { grid-column: 1; grid-row: auto; height: 400px; }
+}

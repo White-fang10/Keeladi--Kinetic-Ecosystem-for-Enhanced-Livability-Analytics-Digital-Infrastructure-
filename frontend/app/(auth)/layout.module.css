@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg);
+}
+
+.brandPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-3xl);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg) 100%);
+  border-right: 1px solid var(--border);
+}
+
+.brandContent {
+  max-width: 500px;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  margin-top: var(--space-xl);
+  font-size: 2.25rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin-top: var(--space-lg);
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.decorativeElements {
+  margin-top: var(--space-3xl);
+  position: relative;
+}
+
+.glowOrb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: var(--accent);
+  filter: blur(120px);
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.glassCard {
+  position: relative;
+  z-index: 1;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  display: inline-block;
+  box-shadow: var(--neo-shadow);
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+.formPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xl);
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 440px;
+}
+
+.mobileLogo {
+  display: none;
+  margin-bottom: var(--space-2xl);
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .brandPanel { display: none; }
+  .formPanel { padding: var(--space-lg); }
+  .mobileLogo { display: flex; }
+}

@@ -1,0 +1,39 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevents flex children from blowing out width */
+}
+
+.content {
+  flex: 1;
+  padding: var(--space-2xl) var(--space-xl);
+  overflow-y: auto;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(7, 30, 37, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: calc(var(--z-sidebar) - 1);
+}
+
+@media (max-width: 1024px) {
+  .content { padding: var(--space-lg) var(--space-md); }
+  
+  :global(.sidebar-open) .overlay {
+    display: block;
+  }
+}
