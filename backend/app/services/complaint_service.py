@@ -70,3 +70,16 @@ def log_complaint_history(db: Session, complaint_id: str, user_id: str, from_sta
     )
     db.add(history)
     db.commit()
+
+def list_complaints(db: Session, current_user, page: int = 1, per_page: int = 20, status: str = None) -> list[Complaint]:
+    from app.models.enums import UserRole
+    query = db.query(Complaint)
+    
+    if current_user.role == UserRole.CITIZEN:
+        query = query.filter(Complaint.user_id == current_user.id)
+    
+    if status:
+        query = query.filter(Complaint.status == status)
+        
+    offset = (page - 1) * per_page
+    return query.order_by(Complaint.created_at.desc()).offset(offset).limit(per_page).all()

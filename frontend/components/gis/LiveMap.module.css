@@ -1,0 +1,60 @@
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  background: var(--bg) !important;
+}
+
+/* Global overrides for Leaflet popups to match neomorphic premium theme */
+:global(.premium-popup .leaflet-popup-content-wrapper) {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--neo-shadow);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-sans);
+}
+
+:global(.premium-popup .leaflet-popup-tip) {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-top: none;
+  border-left: none;
+}
+
+:global(.premium-popup .leaflet-popup-content) {
+  margin: 14px 18px;
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+:global(.premium-popup strong) {
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+}
+
+:global(.custom-leaflet-icon) {
+  background: transparent;
+  border: none;
+}
+
+/* Hide leaflet controls */
+:global(.leaflet-control-attribution) {
+  background: rgba(7, 30, 37, 0.7) !important;
+  color: var(--text-muted) !important;
+  backdrop-filter: blur(4px);
+}
+
+:global(.leaflet-control-attribution a) {
+  color: var(--accent) !important;
+}

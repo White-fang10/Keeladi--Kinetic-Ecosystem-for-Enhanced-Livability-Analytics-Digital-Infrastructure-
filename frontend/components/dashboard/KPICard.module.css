@@ -1,0 +1,75 @@
+.kpiCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.iconWrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  box-shadow: var(--neo-shadow-inset);
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.trend {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.positive {
+  background: rgba(230, 255, 43, 0.15);
+  color: var(--accent);
+}
+
+.negative {
+  background: rgba(255, 123, 123, 0.15);
+  color: #ff7b7b;
+}
+
+.trendLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

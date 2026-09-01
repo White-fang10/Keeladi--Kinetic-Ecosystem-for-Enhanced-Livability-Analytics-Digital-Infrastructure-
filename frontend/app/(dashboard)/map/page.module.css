@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  height: calc(100vh - 120px); /* Fill available space */
+}
+
+.header {
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 2.25rem;
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+}
+
+.mapWrapper {
+  flex: 1;
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--neo-shadow);
+  overflow: hidden;
+  z-index: 1; /* Keep leaflet under modal z-indexes */
+}

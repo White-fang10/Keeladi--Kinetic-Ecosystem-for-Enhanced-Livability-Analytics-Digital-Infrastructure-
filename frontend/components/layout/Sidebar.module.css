@@ -1,0 +1,85 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sidebar);
+}
+
+.logoContainer {
+  padding: var(--space-xl) var(--space-lg);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  flex: 1;
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  overflow-y: auto;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-weight: 500;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.navItem:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.navItem.active {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  box-shadow: var(--neo-shadow-inset);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.activeGlow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: var(--accent-glow);
+}
+
+.bottomNav {
+  padding: var(--space-md);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+  }
+  
+  /* We will add a class to body or shell to slide it in on mobile */
+  :global(.sidebar-open) .sidebar {
+    transform: translateX(0);
+  }
+}

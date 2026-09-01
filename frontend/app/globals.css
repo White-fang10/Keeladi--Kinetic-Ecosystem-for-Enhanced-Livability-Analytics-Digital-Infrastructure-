@@ -1,0 +1,341 @@
+/* ============================================================
+   KEELADI — Global Design System
+   ============================================================ */
+
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Brand Palette */
+  --accent: #E6FF2B;
+  --accent-muted: rgba(230, 255, 43, 0.15);
+  --accent-glow: 0 0 24px rgba(230, 255, 43, 0.35);
+  --primary-dark: #0B4550;
+  --surface: #898A8D;
+  --bg-light: #F9F7F2;
+
+  /* Dark Theme (default) */
+  --bg: #0B4550;
+  --bg-elevated: #0d505d;
+  --bg-card: #0e5768;
+  --text-primary: #F9F7F2;
+  --text-secondary: rgba(249, 247, 242, 0.65);
+  --text-muted: rgba(249, 247, 242, 0.38);
+  --border: rgba(249, 247, 242, 0.08);
+  --border-hover: rgba(230, 255, 43, 0.3);
+
+  /* Neomorphic Shadows (dark) */
+  --neo-shadow: 8px 8px 20px #071e25, -8px -8px 20px #0f6c7b;
+  --neo-shadow-sm: 4px 4px 10px #071e25, -4px -4px 10px #0f6c7b;
+  --neo-shadow-inset: inset 4px 4px 10px #071e25, inset -4px -4px 10px #0f6c7b;
+  --neo-shadow-hover: 12px 12px 28px #071e25, -12px -12px 28px #106070;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(13, 80, 93, 0.6);
+  --glass-border: rgba(230, 255, 43, 0.12);
+  --glass-blur: blur(16px);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', 'Fira Code', monospace;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-card: 10;
+  --z-dropdown: 100;
+  --z-sidebar: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg: #F9F7F2;
+  --bg-elevated: #f0ede6;
+  --bg-card: #ffffff;
+  --text-primary: #0B4550;
+  --text-secondary: rgba(11, 69, 80, 0.65);
+  --text-muted: rgba(11, 69, 80, 0.38);
+  --border: rgba(11, 69, 80, 0.1);
+  --border-hover: rgba(11, 69, 80, 0.3);
+  --neo-shadow: 8px 8px 20px #d1cec9, -8px -8px 20px #ffffff;
+  --neo-shadow-sm: 4px 4px 10px #d1cec9, -4px -4px 10px #ffffff;
+  --neo-shadow-inset: inset 4px 4px 10px #d1cec9, inset -4px -4px 10px #ffffff;
+  --neo-shadow-hover: 12px 12px 28px #c5c2bc, -12px -12px 28px #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(11, 69, 80, 0.12);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
+/* ============================================================
+   TYPOGRAPHY SCALE
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p { color: var(--text-secondary); line-height: 1.7; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+a:hover { opacity: 0.8; }
+
+/* ============================================================
+   UTILITY CLASSES — NEOMORPHIC CARDS
+   ============================================================ */
+.neo-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--neo-shadow);
+  border: 1px solid var(--border);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.neo-card:hover {
+  box-shadow: var(--neo-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.neo-card-sm {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neo-shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.neo-inset {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neo-shadow-inset);
+}
+
+/* ============================================================
+   UTILITY CLASSES — GLASSMORPHISM
+   ============================================================ */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+}
+
+/* ============================================================
+   UTILITY CLASSES — ACCENT
+   ============================================================ */
+.accent-glow {
+  box-shadow: var(--accent-glow);
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.accent-bg {
+  background-color: var(--accent);
+  color: #0B4550;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: var(--bg-elevated); }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--surface); }
+
+/* ============================================================
+   FOCUS STATES — ACCESSIBILITY
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-base) forwards;
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-elevated) 25%,
+    var(--bg-card) 50%,
+    var(--bg-elevated) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* ============================================================
+   LEAFLET OVERRIDES
+   ============================================================ */
+.leaflet-container {
+  background: var(--bg-elevated) !important;
+  border-radius: var(--radius-xl);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--neo-shadow) !important;
+  color: var(--text-primary) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--glass-bg) !important;
+}
+
+/* ============================================================
+   RECHARTS OVERRIDES
+   ============================================================ */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--border) !important;
+}
+
+.recharts-text { fill: var(--text-secondary) !important; }
+.recharts-tooltip-wrapper { filter: none !important; }
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+/* Mobile: < 640px — already handled by clamp() and flex-wrap */
+/* Tablet: 640px–1024px */
+@media (max-width: 1024px) {
+  :root {
+    --space-lg: 20px;
+    --space-xl: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  :root {
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 20px;
+    --space-2xl: 32px;
+  }
+
+  .neo-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--neo-shadow-sm);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
