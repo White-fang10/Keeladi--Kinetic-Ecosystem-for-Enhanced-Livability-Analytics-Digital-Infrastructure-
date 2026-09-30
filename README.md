@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="cover.png" width="100%" alt="KEELADI Smart Civic Operations Platform"/>
+<img src="cover.png" width="100%" alt=""/>
 
 <br>
 
